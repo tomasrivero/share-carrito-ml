@@ -1,11 +1,21 @@
-<h1 class="header-title">
-  Carrito share de Mercado Libre
-</h1>
+<div style="display: flex; justify-content: center ; flex-direction: column ; align-items: center">
+  <div class="header-title">
+    <img src="assets/ml.png" style="width: 100px">
+    <h2 style="margin-bottom: 0">
+      Mi carrito de Mercado Libre
+    </h2>
 
-<div class="input-container">
-  <input [(ngModel)]="productLink" class="product-input">
-  <button (click)="addProductLink()" class="add-button">+</button>
-</div>  
+    <a style="margin: 10px 0; font-weight: 500; font-size: 12px; color: white" href="https://github.com/tomasrivero/" target="_blank">
+      Hecho con amor por tomo ❤️
+    </a>
+
+  </div>
+  
+  <div class="input-container">
+    <input placeholder="Pega acá el link del producto" [(ngModel)]="productLink" class="product-input">
+    <button (click)="addProductLink()" class="add-button">+</button>
+  </div>  
+</div>
 
 <div class="product-list">
   <div *ngFor="let product of productList; let i = index" class="product-item">
@@ -13,10 +23,10 @@
       <img [src]="product.img" class="product-image">
     </div>
     <div class="product-details">
-      <div>
+      <div class="product-name-container">
         <b class="product-name">{{product.name}}</b>
         <div>
-          <a class="product-link" [href]="product.link">{{product.link}}</a>
+          <a class="product-link" [href]="product.link" target="_blank">{{product.link}}</a>
         </div>
       </div>
       <div class="product-price-container">
@@ -31,8 +41,9 @@
   <div *ngIf="productList.length === 0" class="empty-cart-message">
     <h2>No hay productos en el carrito</h2>
   </div>
+</div>
 
   <div *ngIf="productList.length" class="total-container">
-    <h2 class="total-price">{{formatPrice(getTotal(),'ARS')}}</h2>
+    <h3 style="margin: 0">Total ({{productList.length}} elementos)</h3>
+    <h2 style="margin-top:0" class="total-price">{{formatPrice(getTotal(),getTotalCurrency())}}</h2>
   </div>
-</div>

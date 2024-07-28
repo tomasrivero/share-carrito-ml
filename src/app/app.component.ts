@@ -27,6 +27,11 @@ export class AppComponent implements OnInit {
   }
 
   addProductLink() {
+
+    if(!this.productLink) {
+      return;
+    }
+
     try {
       let productId = this.extractProductId(this.productLink);
       this.http.get(`${this.apiUrl}&product_id=${productId}`).subscribe((data: any) => {
@@ -89,11 +94,19 @@ export class AppComponent implements OnInit {
             price: product.price.value,
             priceFormatted: this.formatPrice(product.price.value, product.price.currency_id),
             img: product.img_url,
-            link: this.toMlLink(productId)
+            link: this.toMlLink(productId),
+            currency: product.price.currency_id
           };
           this.productList.push(productObject);
         });
       });
+    }
+  }
+
+  getTotalCurrency(){
+    //the total currency should be the same as the first product
+    if(this.productList.length > 0){
+      return this.productList[0].currency;
     }
   }
 }
