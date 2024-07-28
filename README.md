@@ -12,6 +12,7 @@ Link: https://mlshare.netlify.app/
 - Visualizar la información del producto, incluyendo nombre, precio y la imagen del producto.
 - Eliminar productos de la lista.
 - Ver el precio total de los productos añadidos.
+- Copiar el link del carrito
 
 ## Tecnologías
 
@@ -35,7 +36,7 @@ Link: https://mlshare.netlify.app/
     - El precio total de todos los productos añadidos se mostrará al final de la lista.
 
 5. **Compartir**
-    - A medida que se van agregando productos, la pagina se actualiza con los ids de los productos para que cualquier persona pueda verlos
+    - A medida que se van agregando productos, la pagina se actualiza con los ids de los productos para que cualquier persona pueda verlos. Apretá en el botón al lado del + para copiar el link automaticamente.
 
 
 ---

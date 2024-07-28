@@ -14,6 +14,9 @@
   <div class="input-container">
     <input placeholder="Pega acá el link del producto" [(ngModel)]="productLink" class="product-input" (keydown.enter)="addProductLink()">
     <button (click)="addProductLink()" class="add-button">+</button>
+    <button (click)="copyLink()" class="delete-button">
+      <img src="assets/copy.png" class="delete-icon">
+    </button>
   </div>  
 </div>
 

@@ -109,4 +109,9 @@ export class AppComponent implements OnInit {
       return this.productList[0].currency;
     }
   }
+
+  copyLink(){
+    this.toastr.success('Link copiado al portapapeles');
+    navigator.clipboard.writeText(window.location.href)
+  }
 }
