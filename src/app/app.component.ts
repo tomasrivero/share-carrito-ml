@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { RouterOutlet } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { map } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -27,30 +28,42 @@ export class AppComponent implements OnInit {
   }
 
   addProductLink() {
-
-    if(!this.productLink) {
+    if (!this.productLink) {
       return;
     }
-
+  
     try {
       let productId = this.extractProductId(this.productLink);
-      this.http.get(`${this.apiUrl}&product_id=${productId}`).subscribe((data: any) => {
+      this.fetchProductData(productId).subscribe(
+        (productObject) => {
+          this.productList.push(productObject);
+          this.updateUrlWithProductIds();
+          this.productLink = '';
+          this.toastr.success('Producto agregado con éxito');
+        },
+        () => {
+          this.toastr.error('Link invalido! (Estás logeado en ML?)');
+        }
+      );
+    } catch (error) {
+      this.toastr.error('Link invalido! (Estás logeado en ML?)');
+    }
+  }
+
+  private fetchProductData(productId: string) {
+    return this.http.get(`${this.apiUrl}&product_id=${productId}`).pipe(
+      map((data: any) => {
         const product = data.recommended_products[0];
-        const productObject = {
+        return {
           name: product.name,
           price: product.price.value,
           priceFormatted: this.formatPrice(product.price.value, product.price.currency_id),
           img: product.img_url,
-          link: this.toMlLink(productId)
+          link: this.toMlLink(productId),
+          currency: product.price.currency_id
         };
-        this.productList.push(productObject);
-        this.updateUrlWithProductIds();
-        this.productLink = '';
-        this.toastr.success('Producto agregado con éxito');
-      });
-    } catch (error) {
-      this.toastr.error('Link invalido! (Estás logeado en ML?)');
-    }
+      })
+    );
   }
 
   formatPrice(value: number, currency: string): string {
@@ -81,22 +94,14 @@ export class AppComponent implements OnInit {
     window.history.replaceState({}, '', url.toString());
   }
 
+
   private loadProductsFromUrl() {
     const url = new URL(window.location.href);
     const productIds = url.searchParams.get('products');
     if (productIds) {
       const idsArray = productIds.split(',');
       idsArray.forEach(productId => {
-        this.http.get(`${this.apiUrl}&product_id=${productId}`).subscribe((data: any) => {
-          const product = data.recommended_products[0];
-          const productObject = {
-            name: product.name,
-            price: product.price.value,
-            priceFormatted: this.formatPrice(product.price.value, product.price.currency_id),
-            img: product.img_url,
-            link: this.toMlLink(productId),
-            currency: product.price.currency_id
-          };
+        this.fetchProductData(productId).subscribe((productObject) => {
           this.productList.push(productObject);
         });
       });
@@ -104,7 +109,6 @@ export class AppComponent implements OnInit {
   }
 
   getTotalCurrency(){
-    //the total currency should be the same as the first product
     if(this.productList.length > 0){
       return this.productList[0].currency;
     }
@@ -114,4 +118,6 @@ export class AppComponent implements OnInit {
     this.toastr.success('Link copiado al portapapeles');
     navigator.clipboard.writeText(window.location.href)
   }
+
+  
 }
