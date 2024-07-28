@@ -2,14 +2,14 @@
 
 ## Descripción
 
-**Mi carrito** es una aplicación web desarrollada en Angular que permite a los usuarios pegar enlaces de productos de mercado libre para compartirlos con los demás. Los usuarios pueden añadir productos a una lista.
+**Mi carrito** es una aplicación web desarrollada en Angular que permite a los usuarios armar una lista de productos de Mercado Libre y compartirlo con los demás 🛍️
 
-https://mlshare.netlify.app/
+Link: https://mlshare.netlify.app/
 
 ## Funcionalidades
 
-- Añadir productos a la lista pegando enlaces de productos.
-- Visualizar la información del producto, incluyendo nombre, precio, y una imagen.
+- Añadir productos a la lista pegando enlaces de productos de ML.
+- Visualizar la información del producto, incluyendo nombre, precio y la imagen del producto.
 - Eliminar productos de la lista.
 - Ver el precio total de los productos añadidos.
 
@@ -21,7 +21,7 @@ https://mlshare.netlify.app/
 ## Uso
 
 1. **Añadir Productos:**
-    - Para agregar productos deberías estar logeado en la aplicación para que el link al producto tenga el formato https://www.mercadolibre.com.ar/NOMBRE-DEL-PRODUCTO/p/ID-DEL-PRODUCTO
+    - Para agregar productos deberías estar logeado en la aplicación de mercado libre para que el link al producto tenga el formato https://www.mercadolibre.com/[NOMBRE-DEL-PRODUCTO]/p/[ID-DEL-PRODUCTO]
     - Pegá el enlace del producto en el campo de entrada.
     - Hace click en el botón **"+"** para añadir el producto a la lista.
 
@@ -29,10 +29,13 @@ https://mlshare.netlify.app/
     - Los productos añadidos se mostrarán en la lista con su nombre, imagen y precio.
 
 3. **Eliminar Productos:**
-    - Haz clic en el icono de eliminar junto al producto que deseas quitar de la lista.
+    - Hace click en el icono de eliminar junto al producto que deseas quitar de la lista.
 
 4. **Ver Precio Total:**
     - El precio total de todos los productos añadidos se mostrará al final de la lista.
+
+5. **Compartir**
+    - A medida que se van agregando productos, la pagina se actualiza con los ids de los productos para que cualquier persona pueda verlos
 
 
 ---
