@@ -1,27 +1,84 @@
-# MlShare
+# Mercado Libre Cart Share
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.8.
+## Descripción
 
-## Development server
+**Mercado Libre Cart Share** es una aplicación web desarrollada en Angular que permite a los usuarios pegar enlaces de productos y compartirlos con otros. Los usuarios pueden añadir productos a una lista, ver la información del producto y compartirlo a los demás.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Funcionalidades
 
-## Code scaffolding
+- Añadir productos a la lista pegando enlaces de productos.
+- Visualizar la información del producto, incluyendo nombre, precio, y una imagen.
+- Eliminar productos de la lista.
+- Ver el precio total de los productos añadidos.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Tecnologías
 
-## Build
+- **Angular 17**: Framework de desarrollo para construir la aplicación.
+- **ngx-toastr**: Para notificaciones emergentes.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Instalación
 
-## Running unit tests
+1. **Clona el repositorio:**
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+    ```bash
+    git clone https://github.com/tu-usuario/product-share-app.git
+    cd product-share-app
+    ```
 
-## Running end-to-end tests
+2. **Instala las dependencias:**
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+    ```bash
+    npm install
+    ```
 
-## Further help
+3. **Inicia el servidor de desarrollo:**
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+    ```bash
+    ng serve
+    ```
+
+4. **Accede a la aplicación:**
+
+    Abre tu navegador y visita `http://localhost:4200` para ver la aplicación en acción.
+
+## Uso
+
+1. **Añadir Productos:**
+    - Pega el enlace del producto en el campo de entrada.
+    - Haz clic en el botón **"+"** para añadir el producto a la lista.
+
+2. **Ver Detalles del Producto:**
+    - Los productos añadidos se mostrarán en la lista con su nombre, imagen y precio.
+
+3. **Eliminar Productos:**
+    - Haz clic en el icono de eliminar junto al producto que deseas quitar de la lista.
+
+4. **Ver Precio Total:**
+    - El precio total de todos los productos añadidos se mostrará al final de la lista.
+
+## Contribuciones
+
+Las contribuciones son bienvenidas. Si deseas contribuir a este proyecto, por favor sigue estos pasos:
+
+1. **Haz un fork del repositorio.**
+2. **Crea una nueva rama para tus cambios:**
+
+    ```bash
+    git checkout -b nombre-de-tu-rama
+    ```
+
+3. **Realiza los cambios y haz commit:**
+
+    ```bash
+    git commit -am 'Agrega una nueva funcionalidad'
+    ```
+
+4. **Envía los cambios al repositorio remoto:**
+
+    ```bash
+    git push origin nombre-de-tu-rama
+    ```
+
+5. **Abre un pull request en GitHub.**
+
+---
